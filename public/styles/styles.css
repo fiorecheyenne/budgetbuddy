@@ -1,0 +1,10 @@
+.list-group-item {
+  line-height: 2.5;
+}
+
+#userincome,
+.overalltotal,
+.inputbuttons,
+.remaining {
+  float: right;
+}
