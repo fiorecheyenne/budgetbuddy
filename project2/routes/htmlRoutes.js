@@ -1,23 +1,15 @@
-var db = require("../models");
-
 module.exports = function(app) {
-  // Load index page
-  app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
+  app.get("/table", function(req, res) {
+    res.render("table");
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
-      });
-    });
+  // THE FOLLOWING .GET DOES THE SAME THING EXCEPT YOU DONT NEED TO TYPE /TABLE TO GET TO THE HOME PAGE.
+  // app.get("/index", function(req, res) {
+  //   res.render("index");
+  // });
+
+  app.get("/", function(req, res) {
+    res.render("index");
   });
 
   // Render 404 page for any unmatched routes
