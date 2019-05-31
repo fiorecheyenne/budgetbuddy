@@ -1,66 +1,33 @@
 <div id="home">
-  <section class="hero is-fullheight is-dark is-bold">
-    <div class="hero-body">
-      <div class="container">
-        <div class="columns" id="login">
-          <div class="column is-half" id="wel">
-            <h1 class="title">
-              Welcome to Budget Buddy!
-            </h1>
-            <h2 class="subtitle" id="sub">
-              Track your expenses, make every penny count.
-            </h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <h1>{{msg}}</h1>
+        <h2>This is our Home Page!</h2>
+        <form class="clearfix mb-4" action="POST">
+          <div class="form-group">
+            <label for="example-text">Example Text</label>
+            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
           </div>
-          <div class="column" id="input">
-            <div class="field">
-              <div class="control">
-                <p class="control has-icons-left has-icons-right">
-                  <input class="input is-primary" type="email" placeholder="Username/Email" id="uemail">
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-envelope" id="enve"></i>
-                  </span>
-                </p>
-              </div>
-            </div>
-            <div class="field">
-              <div class="control">
-                <p class="control has-icons-left">
-                  <input class="input is-primary" type="password" placeholder="Password" id="upassword">
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-lock" id="lock"></i>
-                  </span>
-                </p>
-              </div>
-            </div>
-            <div class="buttons are-medium">
-              <span class="button is-info is-inverted" id="auth">Login!</span>
-              <span class="button is-danger" id="noauth">Continue without login</span>
-            </div>
-            <div class="card is-hidden" id="namereq">
-              <div class="card-content has-text-dark">
-                <p class="title has-text-dark">
-                  Well, we need to call you something
-                </p>
-                <p class="subtitle has-text-dark">
-                  What do we call you?
-                </p>
-              </div>
-              <footer class="card-footer">
-                <p class="card-footer-item">
-                  <input class="input is-warning" type="text" placeholder="Put desired name here">
-                </p>
-                <p class="card-footer-item">
-                  <span class="button is-success is-outlined is-fullwidth" id="go">GO</a>
-                  </span>
-                </p>
-              </footer>
-            </div>
+          <div class="form-group">
+            <label for="example-description">Example Description</label>
+            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
           </div>
-        </div>
+          <button id="submit" class="btn btn-primary float-right">Submit</button>
+        </form>
+        <h3>Examples:</h3>
+        <ul id="example-list" class="list-group">
+          {{#each examples}}
+          <li data-id="{{this.id}}" class="list-group-item">
+            <a href="example/{{this.id}}">{{this.text}}</a>
+            <button class="btn btn-danger float-right delete">ｘ</button>
+          </li>
+          {{/each}}
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="/js/index.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
