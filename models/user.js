@@ -20,5 +20,11 @@ Users.associate = function(models) {
     });
   };
 
+  
+
+
+
   return Users;
+
+  
 };
