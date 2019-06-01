@@ -4,7 +4,27 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        
+        income: {
+          type: DataTypes.DECIMAL(10,2),
+          allowNull: false,
+      }
     });
 
-    return Users;
+
+Users.associate = function(models) {
+    // Associating user with budget
+    // When an user is deleted, also delete any associated budgets
+    Users.hasMany(models.Budget, {
+      onDelete: "cascade"
+    });
+  };
+
+  
+
+
+
+  return Users;
+
+  
 };
