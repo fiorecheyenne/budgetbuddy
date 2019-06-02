@@ -42,28 +42,64 @@ $("#add").on("click", () => {
 );
 
 $("#budgetbreak").on("click", () => {
-  window.location.href="./pages/userbreakdown.html"
+  window.location.href="./userbreakdown.html"
 });
 
-new Chart(document.getElementById("doughnut-chart"), {
-  type: 'doughnut',
-  data: {
-    labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-    datasets: [
-      {
-        label: "Population (millions)",
-        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-        data: [2478,5267,734,784,433]
-      }
-    ]
+
+var options1 = {
+  chart: {
+    height: 280,
+    type: "radialBar",
   },
-  options: {
-    title: {
-      display: true,
-      text: 'Predicted world population (millions) in 2050'
+  series: [760, 45, 200, 100, 80, 90, 30, 20],
+  plotOptions: {
+    radialBar: {
+      dataLabels: {
+        total: {
+          show: true,
+          label: 'TOTAL'
+        }
+      }
     }
-  }
-});
+  },
+  labels: ['Transportation', 'Medical', 'Loans', 'Home', 'Utilities', 'Entertainment', 'Groceries', 'Personal Care', 'Savings']
+};
+
+new ApexCharts(document.querySelector("#chart1"), options1).render();
+
+// var data = {
+//   labels: [
+//       "Red",
+//       "Blue",
+//       "Yellow"
+//   ],
+//   datasets: [
+//       {
+//           data: [10, 10, 10],
+//           backgroundColor: [
+//               "#FF6384",
+//               "#36A2EB",
+//               "#FFCE56"
+//           ],
+//           hoverBackgroundColor: [
+//               "#FF6384",
+//               "#36A2EB",
+//               "#FFCE56"
+//           ]
+//       }]
+// };
+
+// var ctx = document.getElementById("myChart");
+
+// // And for a doughnut chart
+// var myDoughnutChart = new Chart(ctx, {
+//     type: 'doughnut',
+//     data: data,
+//     options: {
+//     	rotation: 1 * Math.PI,
+//       circumference: 1 * Math.PI
+//     }
+// });
 //Chart for user input -- not yet functional
 // var ctx = $('#expChart');
 // var expChart = new Chart(ctx, {

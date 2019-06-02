@@ -12,7 +12,7 @@ module.exports = (app) => {
   });
 
   app.get("/userbreakdown", (req, res) => {
-    res.sendFile(path.join(__dirname, "/../public/pages/userbreakdown.html"));
+    res.sendFile(path.join(__dirname, "/../userbreakdown.html"));
   });
   // Render 404 page for any unmatched routes
   app.use("*", (req, res) => {

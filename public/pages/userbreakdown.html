@@ -27,26 +27,42 @@
         <div class="tile is-ancestor">
                 <div class="tile is-4 is-vertical is-parent">
                   <div class="tile is-child box">
-                    <p class="title is-5 username">User name here</p>
-                    <p class="title userincome is-vertical is-center">Total income: <br><br>
-                        212435436</p><br>
+                   
+                    <p class="title is-5 userincome is-vertical is-center"> 
+                            Total income:</p>
+                           
+                    <p class="title uincomein has-text-success">
+                            2,000</p>
                   </div>
                   <div class="tile is-child box">
-                    <p class="title is-5 remainingmoney">Income - expenses</p><br><br>
-                    <p class="title remaining">8346</p>
+                    <p class="title is-5 remainingmoney">Income - expenses</p>
+                    <p class="title remaining has-text-warning">300</p>
                   </div>
                 </div>
                 <div class="tile is-parent">
                   <div class="tile is-child box">
                     <p class="title expenses">Expenses by Category</p>
                     <p id="chartdisp">
-                            <canvas id="doughnut-chart" width="400" height="400"></canvas>
+                            <div id="chart1">
+
+
+                         </div>
+
+                            <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script> -->
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 </body>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="../js/index.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+
+  <!-- Function for radial charts -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  
+  
+
+
+<script type="text/javascript"
+src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="../js/index.js"></script>
