@@ -1,16 +1,22 @@
 
-$("#new").on("click", function(event) {
+$("#new").on("click", () => {
   event.preventDefault();
   $("#newusername").addClass("is-active");
+  $(".field").hide();
+  $("#wel").hide();
+  $(".buttons").hide();
 });
 
-$("#close").on("click", function(event) {
+$("#close").on("click", () => {
   event.preventDefault();
   $("#newusername").removeClass("is-active");
+  $(".field").show();
+  $("#wel").show();
+  $(".buttons").show();
 });
 
 
-$("#go").on("click", function(event) {
+$("#go").on("click", () => {
 
   var valid = true;
   if($(".uname").val() === "" || $("#newuinco").val() === "") {
@@ -27,7 +33,7 @@ $("#go").on("click", function(event) {
   };
 });
 
-$("#add").on("click", function(event){
+$("#add").on("click", () => {
   const newRow = $(".erow");
   newRow.clone().prependTo(".inputbuttons").removeClass("erow");
    newRow.clone().appendTo(".is-half").removeClass("erow");

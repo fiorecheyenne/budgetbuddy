@@ -2,17 +2,17 @@ var db = require("../models");
 const path = require("path");
 
 
-module.exports = function(app) {
-  app.get("/table", function(req, res) {
+module.exports = (app) => {
+  app.get("/table", (req, res) => {
     res.sendFile(path.join(__dirname, "/../public/pages/table.html"));
   });
 
-  app.get("/", function(req, res) {
+  app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "/../public/pages/index.html"));
   });
 
   // Render 404 page for any unmatched routes
-  app.use("*", function(req, res) {
+  app.use("*", (req, res) => {
     res.sendFile(path.join(__dirname, "/../public/pages/404.html"));
   });
 };
