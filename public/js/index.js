@@ -1,5 +1,6 @@
+//index page functions 
 
-
+//Toggle modal display when new user button is clicked - also hides all fields behind modal
 $("#new").on("click", () => {
   event.preventDefault();
   $("#newusername").addClass("is-active");
@@ -8,6 +9,18 @@ $("#new").on("click", () => {
   $(".buttons").hide();
 });
 
+//Login button, store input value into variable 
+$("#auth").on("click", () => {
+  event.preventDefault();
+  var returnUser = $("#uname");
+  if (returnUser.val() === "") {
+    alert("Username empty or no matching user found");
+  } else {
+window.location.href="./pages/userbreakdown.html"
+  }
+});
+
+//Toggle modal display when close button is clicked - also toggles display behind modal
 $("#close").on("click", () => {
   event.preventDefault();
   $("#newusername").removeClass("is-active");
@@ -16,24 +29,27 @@ $("#close").on("click", () => {
   $(".buttons").show();
 });
 
-
+//Validate user has completed form
 $("#go").on("click", () => {
-
   var valid = true;
   if($(".uname").val() === "" || $("#newuinco").val() === "") {
     valid = false;
     alert("Form incomplete");
   }
   if(valid === true) {
+//Variable for new user storing their input values
     var newUser = {
       user: $(".uname").val().trim(),
       income: $("#newuinco").val().trim()
     }
+//redirect to expenses page 
     window.location.href="./pages/table.html";
-
-  };
+  }
 });
 
+// expense page functions 
+
+//Add additional rows for expenses 
 $("#add").on("click", () => {
   const newRow = $(".erow");
   newRow.clone().prependTo(".inputbuttons").removeClass("erow");
@@ -41,81 +57,69 @@ $("#add").on("click", () => {
   }
 );
 
+//Redirects user to their budget breakdown page once expenses are added 
 $("#budgetbreak").on("click", () => {
   window.location.href="./userbreakdown.html"
 });
 
+//user breakdown page functions 
 
-var options1 = {
+//function for chart display
+var options = {
   chart: {
-    height: 280,
-    type: "radialBar",
+    type: 'donut',
+    height: 300
   },
-  series: [760, 45, 200, 100, 80, 90, 30, 20],
-  plotOptions: {
-    radialBar: {
-      dataLabels: {
-        total: {
-          show: true,
-          label: 'TOTAL'
-        }
-      }
-    }
+  series: [44, 55, 13, 33],
+  labels: ['Transportation', 'Medical', 'Loans', 'Rent', 'Utilities', 'Entertainment', 'Groceries', 'Personal Care', 'Savings'],
+  dataLabels: {
+    enabled: false,
+    formatter: function (val) {
+      return val + "%"
+    },
   },
-  labels: ['Transportation', 'Medical', 'Loans', 'Home', 'Utilities', 'Entertainment', 'Groceries', 'Personal Care', 'Savings']
+  legend: {
+    show: false
+  },
+    plotOptions: {
+      pie: {
+        size: 100
+      },
+        donut: {
+          size: '80%'
+        },
+  },
 };
+const chart = new ApexCharts(document.querySelector("#chart"), options);
+chart.render();
 
-new ApexCharts(document.querySelector("#chart1"), options1).render();
+//Expenses modal triggers 
+const expenseModal = $("#expensesmodal");
+//Toggle modal on button click
+$("#editexp").on("click", () => {
+  event.preventDefault();
+  expenseModal.addClass("is-active");
+});
+//Close modal when x is clicked
+$("#closeEmodal").on("click", () => {
+  expenseModal.removeClass("is-active");
+});
+//Close modal when cancel is clicked
+$("#cancelEchange").on("click", () => {
+  expenseModal.removeClass("is-active");
+});
 
-// var data = {
-//   labels: [
-//       "Red",
-//       "Blue",
-//       "Yellow"
-//   ],
-//   datasets: [
-//       {
-//           data: [10, 10, 10],
-//           backgroundColor: [
-//               "#FF6384",
-//               "#36A2EB",
-//               "#FFCE56"
-//           ],
-//           hoverBackgroundColor: [
-//               "#FF6384",
-//               "#36A2EB",
-//               "#FFCE56"
-//           ]
-//       }]
-// };
-
-// var ctx = document.getElementById("myChart");
-
-// // And for a doughnut chart
-// var myDoughnutChart = new Chart(ctx, {
-//     type: 'doughnut',
-//     data: data,
-//     options: {
-//     	rotation: 1 * Math.PI,
-//       circumference: 1 * Math.PI
-//     }
-// });
-//Chart for user input -- not yet functional
-// var ctx = $('#expChart');
-// var expChart = new Chart(ctx, {
-//   type: 'doughnut',
-//   data: {
-//     labels: ['Transportation', 'Medical', 'Loans', 'Rent', 'Utilities', 'Entertainment', 'Groceries', 'Personal Care', 'Savings'],
-//     datasets: [{
-//       label: "By category",
-//       backgroundColor: ["#c58ee5", "#8ed9e5", "#8ee5c5", "#e88b9c", "#eaedb1", "#efd1a7","#d18ebe", "#659dce", "#d7bfef"],
-//       data: [14, 45, 12, 20, 9]
-//     }]
-//   },
-//   options: {
-//     title: {
-//       display: true,
-//       text: 'Expenses by category'
-//     }
-//   }
-// });
+//Income modal triggers
+const incomeModal = $("#incomemodal");
+//Toggle modal on click
+$("#editinc").on("click", () => {
+  incomeModal.addClass("is-active");
+});
+//Close modal when x is clicked
+$("#closeImodal").on("click", () => {
+  incomeModal.removeClass("is-active");
+})
+//Close modal when cancel is clicked
+$("#cancelIchange").on("click", () => {
+  incomeModal.removeClass("is-active");
+})
