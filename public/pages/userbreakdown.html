@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../styles/styles.css" media="screen" title="no title" charset="utf-8">
+  <title>Budget Breakdown</title>
+</head>
+<body>
+        <section class="hero is-primary">
+                <div class="hero-body">
+                  <div class="container">
+                    <h1 class="title">
+                    Your budget breakdown
+                    </h1>
+                    <h2 class="subtitle">
+                      
+                    </h2>
+                  </div>
+                </div>
+              </section>
+              <br>
+              <div class="container budgetcontainer">
+        <div class="tile is-ancestor">
+                <div class="tile is-4 is-vertical is-parent">
+                  <div class="tile is-child box">
+                    <p class="title is-5 username">User name here</p>
+                    <p class="title userincome is-vertical is-center">212435436</p>
+                  </div>
+                  <div class="tile is-child box">
+                    <p class="title is-5 remainingmoney">Income - expenses</p>
+                    <p class="title remaining">8346</p>
+                  </div>
+                </div>
+                <div class="tile is-parent">
+                  <div class="tile is-child box">
+                    <p class="title expenses">Expenses</p>
+                    <p id="chartdisp">
+                            <canvas id="doughnut-chart" width="800" height="450"></canvas>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+</body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="../js/index.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
