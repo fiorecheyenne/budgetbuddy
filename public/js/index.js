@@ -29,7 +29,7 @@ $("#go").on("click", function(event) {
 
 $("#add").on("click", function(event){
   const newRow = $(".erow");
-  newRow.clone().prependTo(".inputbuttons");
-   newRow.clone().appendTo(".is-half");
+  newRow.clone().prependTo(".inputbuttons").removeClass("erow");
+   newRow.clone().appendTo(".is-half").removeClass("erow");
   }
 );
