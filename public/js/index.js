@@ -26,3 +26,10 @@ $("#go").on("click", function(event) {
 
   };
 });
+
+$("#add").on("click", function(event){
+  const newRow = $(".erow");
+  newRow.clone().prependTo(".inputbuttons");
+   newRow.clone().appendTo(".is-half");
+  }
+);
