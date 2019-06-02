@@ -1,15 +1,28 @@
+
 $("#new").on("click", function(event) {
   event.preventDefault();
-  $("#newuser").addClass("is-active");
-  // $("#namereq").removeClass("is-hidden");
-  // $("#wel, #sub").addClass("is-hidden");
-  // $("#uemail, #upassword").addClass("is-hidden");
-  // $(".buttons").addClass("is-hidden");
-  // $("#enve").addClass("is-hidden");
-  // $("#lock").addClass("is-hidden");
+  $("#newusername").addClass("is-active");
 });
 
-$(".delete").on("click", function(event) {
+$("#close").on("click", function(event) {
   event.preventDefault();
-  $("#newuser").removeClass("is-active");
+  $("#newusername").removeClass("is-active");
+});
+
+
+$("#go").on("click", function(event) {
+
+  var valid = true;
+  if($(".uname").val() === "" || $("#newuinco").val() === "") {
+    valid = false;
+    alert("Form incomplete");
+  }
+  if(valid === true) {
+    var newUser = {
+      user: $(".uname").val().trim(),
+      income: $("#newuinco").val().trim()
+    }
+    window.location.href="./pages/table.html";
+
+  };
 });
