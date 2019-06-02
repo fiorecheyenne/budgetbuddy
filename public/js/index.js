@@ -64,7 +64,7 @@ new Chart(document.getElementById("doughnut-chart"), {
     }
   }
 });
-
+//Chart for user input -- not yet functional
 // var ctx = $('#expChart');
 // var expChart = new Chart(ctx, {
 //   type: 'doughnut',
