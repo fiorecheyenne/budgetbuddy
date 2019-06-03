@@ -1,3 +1,4 @@
+// index page javascript
 
 //Toggle modal display when new user button is clicked - also hides all fields behind modal
 $("#new").on("click", () => {
@@ -40,13 +41,15 @@ $("#go").on("click", () => {
     var newUser = {
       user: $(".uname").val().trim(),
       income: $("#newuinco").val().trim()
-    }
+     
+    };
+
 //redirect to expenses page 
     window.location.href="./pages/table.html";
   }
 });
 
-// expense page functions 
+// expense page javascript
 
 //Add additional rows for expenses 
 $("#add").on("click", () => {
@@ -61,7 +64,8 @@ $("#budgetbreak").on("click", () => {
   window.location.href="./userbreakdown.html"
 });
 
-//user breakdown page functions 
+//user breakdown page javascript
+
 
 //function for chart display
 var options = {
