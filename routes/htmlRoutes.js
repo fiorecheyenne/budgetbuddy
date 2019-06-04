@@ -1,19 +1,22 @@
-module.exports = function(app) {
-  app.get("/table", function(req, res) {
-    res.render("table");
+var db = require("../models");
+const path = require("path");
+
+
+module.exports = (app) => {
+  app.get("/table", (req, res) => {
+    res.sendFile(path.join(__dirname, "/../public/pages/table.html"));
   });
-
-  // THE FOLLOWING .GET DOES THE SAME THING EXCEPT YOU DONT NEED TO TYPE /TABLE TO GET TO THE HOME PAGE.
-  // app.get("/index", function(req, res) {
-  //   res.render("index");
-  // });
-
-  app.get("/", function(req, res) {
-    res.render("index");
+// Home page
+  app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "/../public/pages/index.html"));
   });
-
+// User breakdown page
+  app.get("/userbreakdown", (req, res) => {
+    res.sendFile(path.join(__dirname, "/../public/pages/userbreakdown.html"));
+  });
   // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
-    res.render("404");
+  app.use("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "/../public/pages/404.html"));
   });
 };
+

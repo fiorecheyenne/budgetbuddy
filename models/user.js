@@ -8,7 +8,11 @@ module.exports = function(sequelize, DataTypes) {
         income: {
           type: DataTypes.DECIMAL(10,2),
           allowNull: false,
-      }
+      },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
     });
 
 
@@ -19,10 +23,6 @@ Users.associate = function(models) {
       onDelete: "cascade"
     });
   };
-
-  
-
-
 
   return Users;
 
