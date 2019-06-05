@@ -1,4 +1,3 @@
-var db = require("../models");
 const path = require("path");
 
 
