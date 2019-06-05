@@ -15,52 +15,44 @@
             <div class="field">
               <div class="control">
                 <p class="control has-icons-left has-icons-right">
-                  <input class="input is-primary" type="email" placeholder="Username/Email" id="uemail">
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-envelope" id="enve"></i>
-                  </span>
+                  <input class="input is-primary" type="text" placeholder="Username" id="uname">
+                 
                 </p>
               </div>
             </div>
-            <div class="field">
-              <div class="control">
-                <p class="control has-icons-left">
-                  <input class="input is-primary" type="password" placeholder="Password" id="upassword">
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-lock" id="lock"></i>
-                  </span>
-                </p>
-              </div>
-            </div>
+            
             <div class="buttons are-medium">
               <span class="button is-info is-inverted" id="auth">Login!</span>
-              <span class="button is-danger" id="noauth">Continue without login</span>
+              <span class="button is-success is-inverted" id="new">New user?</span>
             </div>
-            <div class="card is-hidden" id="namereq">
+            <div class="modal" id="newusername">
+            <div class="modal-card">
+            
               <div class="card-content has-text-dark">
-                <p class="title has-text-dark">
-                  Well, we need to call you something
-                </p>
-                <p class="subtitle has-text-dark">
-                  What do we call you?
-                </p>
-              </div>
-              <footer class="card-footer">
-                <p class="card-footer-item">
-                  <input class="input is-warning" type="text" placeholder="Put desired name here">
-                </p>
-                <p class="card-footer-item">
-                  <span class="button is-success is-outlined is-fullwidth" id="go">GO</a>
-                  </span>
-                </p>
-              </footer>
+            <section class="modal-card-body">
+              <h2 is-title> Choose a username:</h2>
+              <input class="input is-primary uname" type="text" placeholder="Username">
+          
+            <h2 is-title>Whats your monthly income?</h2>
+            <input class="input is-primary" id="newuinco" type="number" placeholder="1,700">
+          </section>
+
+           <footer class="modal-card-foot">
+             <button class="button is-success" type="submit" id="go">GO!</button>
+             <button class="button is-danger" id="close">Cancel</button>
+           </footer>
             </div>
           </div>
         </div>
       </div>
     </div>
+    </div>
+    </div>
   </section>
+  </div>
 
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="/js/index.js"></script>
+
+  

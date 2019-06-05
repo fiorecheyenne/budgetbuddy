@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../styles/styles.css" media="screen" title="no title" charset="utf-8">
+  <title>Budget Breakdown</title>
+</head>
+
+<body>
+  <section class="hero is-info is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Your budget breakdown
+        </h1>
+        <h2 class="subtitle">
+
+        </h2>
+      </div>
+    </div>
+  </section>
+  <br>
+  <!--Tile for total income-->
+  <div class="container budgetcontainer">
+    <div class="tile is-ancestor">
+      <div class="tile is-4 is-vertical is-parent">
+        <div class="tile is-child box">
+          <p class="title is-5 userincome is-vertical is-center">
+            Total income:</p>
+          <p class="title uincomein has-text-success">
+            2,000</p>
+          <p class="editincome">
+            <button class="button is-medium is-fullwidth is-primary is-outlined" id="editinc">Edit Income</button>
+          </p>
+        </div>
+        <!--Modal for editing income-->
+        <div class="modal" id="incomemodal">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">Income</p>
+              <button class="delete" id="closeImodal" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body" id="inceditcontent">
+              <!-- Content ... -->
+            </section>
+            <footer class="modal-card-foot">
+              <button class="button is-success">Save changes</button>
+              <button class="button is-danger" id="cancelIchange">Cancel</button>
+            </footer>
+          </div>
+        </div>
+
+        <!--Tile for total expenses-->
+        <div class="tile is-child box">
+          <p class="title is-5 remainingmoney">Income - expenses:</p>
+          <p class="title remaining has-text-warning">300</p>
+          <p class="editexpenses">
+            <button class="button is-medium is-fullwidth is-primary is-outlined" id="editexp">Edit Expenses</button>
+          </p>
+        </div>
+      </div>
+      <!--Modal for editing expenses-->
+      <div class="modal" id="expensesmodal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Expenses</p>
+            <button class="delete" id="closeEmodal" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body" id="expeditcontent">
+            <!-- Content ... -->
+          </section>
+          <footer class="modal-card-foot">
+            <button class="button is-success">Save changes</button>
+            <button class="button is-danger" id="cancelEchange">Cancel</button>
+          </footer>
+        </div>
+      </div>
+      <!--Tile for chart to display expnsenses by category-->
+      <div class="tile is-parent">
+        <div class="tile is-child box">
+          <p class="title expenses">Expenses by Category</p>
+          <p id="chartdisp">
+            <div id="chart">
+            </div>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container furtherbreakdown is-hidden">
+    <div class="tile is-ancestor">
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+
+          <p class="subtitle">
+            <div id="chart2">
+            </div>
+          </p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title">Two</p>
+          <p class="subtitle">Subtitle</p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title">Three</p>
+          <p class="subtitle">Subtitle</p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title">Four</p>
+          <p class="subtitle">Subtitle</p>
+        </article>
+      </div>
+    </div>
+    <div class="tile is-ancestor">
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title">One</p>
+          <p class="subtitle">Subtitle</p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title">Two</p>
+          <p class="subtitle">Subtitle</p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title">Three</p>
+          <p class="subtitle">Subtitle</p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title">Four</p>
+          <p class="subtitle">Subtitle</p>
+        </article>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+
+<!-- Function for charts -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<!--jQuery-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--All local Javascript files-->
+<script type="text/javascript" src="../js/userbreakdown.js"></script>
