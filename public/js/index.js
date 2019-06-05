@@ -1,4 +1,7 @@
+// $(document).ready(function() {
+
 // index page javascript
+// var ApexCharts = require("apexcharts");
 
 //Toggle modal display when new user button is clicked - also hides all fields behind modal
 $("#new").on("click", () => {
@@ -16,7 +19,8 @@ $("#auth").on("click", () => {
   if (returnUser.val() === "") {
     alert("Username empty or no matching user found");
   } else {
-window.location.href="./pages/userbreakdown.html"
+    localStorage.setItem("User", returnUser.user);
+    window.location.href = "./pages/userbreakdown.html"
   }
 });
 
@@ -30,22 +34,36 @@ $("#close").on("click", () => {
 });
 
 //Validate user has completed form
-$("#go").on("click", () => {
+$("#go").on("click", (event) => {
+
   var valid = true;
-  if($(".uname").val() === "" || $("#newuinco").val() === "") {
+  if ($(".uname").val() === "" || $("#newuinco").val() === "") {
     valid = false;
     alert("Form incomplete");
   }
-  if(valid === true) {
-//Variable for new user storing their input values
+  if (valid === true) {
+    //Variable for new user storing their input values
     var newUser = {
       user: $(".uname").val().trim(),
       income: $("#newuinco").val().trim()
-     
     };
+    localStorage.setItem("User", newUser.user);
+    localStorage.setItem("Income", newUser.income);
 
-//redirect to expenses page 
-    window.location.href="./pages/table.html";
+
+    $.ajax("/api/users", {
+      type: "POST",
+      url: "/api/users",
+      user: newUser.user,
+      income: newUser.income
+    }).then(function (burrito) {
+      console.log(burrito);
+      console.log(newUser)
+    });
+
+    event.preventDefault();
+    // redirect to expenses page 
+    window.location.href = "./pages/table.html";
   }
 });
 
@@ -55,13 +73,12 @@ $("#go").on("click", () => {
 $("#add").on("click", () => {
   const newRow = $(".erow");
   newRow.clone().prependTo(".inputbuttons").removeClass("erow");
-   newRow.clone().appendTo(".is-half").removeClass("erow");
-  }
-);
+  newRow.clone().appendTo(".is-half").removeClass("erow");
+});
 
 //Redirects user to their budget breakdown page once expenses are added 
 $("#budgetbreak").on("click", () => {
-  window.location.href="./userbreakdown.html"
+  window.location.href = "./userbreakdown.html"
 });
 
 //user breakdown page javascript
@@ -84,17 +101,17 @@ var options = {
   legend: {
     show: false
   },
-    plotOptions: {
-      pie: {
-        size: 100
-      },
-        donut: {
-          size: '80%'
-        },
+  plotOptions: {
+    pie: {
+      size: 100
+    },
+    donut: {
+      size: '80%'
+    },
   },
 };
-const chart = new ApexCharts(document.querySelector("#chart"), options);
-chart.render();
+// const chart = new ApexCharts(document.querySelector("#chart"), options);
+// chart.render();
 
 //Expenses modal triggers 
 const expenseModal = $("#expensesmodal");
@@ -112,17 +129,30 @@ $("#cancelEchange").on("click", () => {
   expenseModal.removeClass("is-active");
 });
 
-  //Income modal triggers
-  const incomeModal = $("#incomemodal");
-  //Toggle modal on click
-  $("#editinc").on("click", () => {
-    incomeModal.addClass("is-active");
-  });
-  //Close modal when x is clicked
-  $("#closeImodal").on("click", () => {
-    incomeModal.removeClass("is-active");
-  })
-  //Close modal when cancel is clicked
-  $("#cancelIchange").on("click", () => {
-    incomeModal.removeClass("is-active");
-  })
+//Income modal triggers
+const incomeModal = $("#incomemodal");
+//Toggle modal on click
+$("#editinc").on("click", () => {
+  incomeModal.addClass("is-active");
+});
+//Close modal when x is clicked
+$("#closeImodal").on("click", () => {
+  incomeModal.removeClass("is-active");
+})
+//Close modal when cancel is clicked
+$("#cancelIchange").on("click", () => {
+  incomeModal.removeClass("is-active");
+})
+
+// var newUserData = [{
+//   Username: $("#newunameinput").val().trim(),
+//   Income: $("#newuinco").val().trim()
+// }];
+
+// $("#go").submit(function(){
+//   alert("submitted");
+//   preventDefault();
+// })
+
+
+// }  

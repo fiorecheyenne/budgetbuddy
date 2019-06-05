@@ -1,11 +1,7 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
     "password": "root",
-=======
-    "password": "Chloe@85",
->>>>>>> 1d79d898ca83fc7649bc27732bf49eec0f2c8163
     "database": "budgetbuddy",
     "host": "localhost",
     "dialect": "mysql"
