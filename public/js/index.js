@@ -57,102 +57,13 @@ $("#go").on("click", (event) => {
       user: newUser.user,
       income: newUser.income
     }).then(function (burrito) {
-      console.log(burrito);
-      console.log(newUser)
-    });
 
+      console.log(burrito);
+      // console.log(newUser)
+      window.location.href = "./pages/table.html";
+    });
+    
     event.preventDefault();
     // redirect to expenses page 
-    window.location.href = "./pages/table.html";
   }
 });
-
-// expense page javascript
-
-//Add additional rows for expenses 
-$("#add").on("click", () => {
-  const newRow = $(".erow");
-  newRow.clone().prependTo(".inputbuttons").removeClass("erow");
-  newRow.clone().appendTo(".is-half").removeClass("erow");
-});
-
-//Redirects user to their budget breakdown page once expenses are added 
-$("#budgetbreak").on("click", () => {
-  window.location.href = "./userbreakdown.html"
-});
-
-//user breakdown page javascript
-
-
-//function for chart display
-var options = {
-  chart: {
-    type: 'donut',
-    height: 300
-  },
-  series: [44, 55, 13, 33],
-  labels: ['Transportation', 'Medical', 'Loans', 'Rent', 'Utilities', 'Entertainment', 'Groceries', 'Personal Care', 'Savings'],
-  dataLabels: {
-    enabled: false,
-    formatter: function (val) {
-      return val + "%"
-    },
-  },
-  legend: {
-    show: false
-  },
-  plotOptions: {
-    pie: {
-      size: 100
-    },
-    donut: {
-      size: '80%'
-    },
-  },
-};
-// const chart = new ApexCharts(document.querySelector("#chart"), options);
-// chart.render();
-
-//Expenses modal triggers 
-const expenseModal = $("#expensesmodal");
-//Toggle modal on button click
-$("#editexp").on("click", () => {
-  event.preventDefault();
-  expenseModal.addClass("is-active");
-});
-//Close modal when x is clicked
-$("#closeEmodal").on("click", () => {
-  expenseModal.removeClass("is-active");
-});
-//Close modal when cancel is clicked
-$("#cancelEchange").on("click", () => {
-  expenseModal.removeClass("is-active");
-});
-
-//Income modal triggers
-const incomeModal = $("#incomemodal");
-//Toggle modal on click
-$("#editinc").on("click", () => {
-  incomeModal.addClass("is-active");
-});
-//Close modal when x is clicked
-$("#closeImodal").on("click", () => {
-  incomeModal.removeClass("is-active");
-})
-//Close modal when cancel is clicked
-$("#cancelIchange").on("click", () => {
-  incomeModal.removeClass("is-active");
-})
-
-// var newUserData = [{
-//   Username: $("#newunameinput").val().trim(),
-//   Income: $("#newuinco").val().trim()
-// }];
-
-// $("#go").submit(function(){
-//   alert("submitted");
-//   preventDefault();
-// })
-
-
-// }  
