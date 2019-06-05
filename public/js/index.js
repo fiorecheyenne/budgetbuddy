@@ -41,8 +41,8 @@ $("#go").on("click", () => {
     var newUser = {
       user: $(".uname").val().trim(),
       income: $("#newuinco").val().trim(),
-      password: $(".pw");
-    }
+      password: $(".pw")
+    };
      
 
 //redirect to expenses page 
