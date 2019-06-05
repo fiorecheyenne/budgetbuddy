@@ -16,7 +16,7 @@ $("#auth").on("click", () => {
   if (returnUser.val() === "") {
     alert("Username empty or no matching user found");
   } else {
-window.location.href="./pages/userbreakdown.html"
+    window.location.href = "./pages/userbreakdown.html"
   }
 });
 
@@ -31,21 +31,38 @@ $("#close").on("click", () => {
 
 //Validate user has completed form
 $("#go").on("click", () => {
+  
   var valid = true;
-  if($(".uname").val() === "" || $("#newuinco").val() === "") {
+  var uname = $(".uname").val();
+  var newUinco = $("#newuinco").val();
+  var passwordU = $(".pw").val();
+
+  var newUser = {
+    user: uname,
+    income: newUinco,
+    password: passwordU
+  };
+
+  if (uname === "" || newUinco === "") {
     valid = false;
     alert("Form incomplete");
   }
-  if(valid === true) {
-//Variable for new user storing their input values
-    var newUser = {
-      user: $(".uname").val().trim(),
-      income: $("#newuinco").val().trim(),
-      password: $(".pw")
-    };
-     
 
-//redirect to expenses page 
-    window.location.href="./pages/table.html";
+  if (valid === true) {
+
+    $.ajax("/api/users", {
+      type: "POST",
+      data: newUser
+    }).then(
+      function () {
+        console.log("NEW USER!!");
+
+        location.reload();
+      }
+    );
+
+    //redirect to expenses page 
+    window.location.href = "./pages/table.html";
   }
+
 });
