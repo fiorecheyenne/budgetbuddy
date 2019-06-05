@@ -1,5 +1,9 @@
 // index page javascript
 
+//Global vars
+var uname;
+var idHolder;
+
 //Toggle modal display when new user button is clicked - also hides all fields behind modal
 $("#new").on("click", () => {
   event.preventDefault();
@@ -31,11 +35,11 @@ $("#close").on("click", () => {
 
 //Validate user has completed form
 $("#go").on("click", () => {
-  
+
   var valid = true;
-  var uname = $(".uname").val();
   var newUinco = $("#newuinco").val();
   var passwordU = $(".pw").val();
+  uname = $(".uname").val();
 
   var newUser = {
     user: uname,
@@ -50,19 +54,29 @@ $("#go").on("click", () => {
 
   if (valid === true) {
 
-    $.ajax("/api/users", {
-      type: "POST",
-      data: newUser
-    }).then(
-      function () {
-        console.log("NEW USER!!");
-
-        location.reload();
-      }
-    );
-
-    //redirect to expenses page 
-    window.location.href = "./pages/table.html";
+    makeUser(newUser);
   }
 
 });
+
+function makeUser(newUser) {
+  $.post("/api/users", newUser)
+  .then(getID);
+}
+
+function getID() {
+  $.get("/api/users", function (data) {
+
+    for (var i = 0; i < data.length; i++) {
+      if(data[i].user === uname) {
+        idHolder = data[i].id;
+
+        tablePage()
+      }
+    }
+  });
+}
+
+function tablePage() {
+  window.location.href = "/table?userID=" + idHolder;
+}
