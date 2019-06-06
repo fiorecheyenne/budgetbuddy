@@ -87,6 +87,10 @@ function tablePage() {
   window.location.href = "/table?userID=" + idHolder;
 }
 
+function breakdownPage() {
+  window.location.href = "/userbreakdown?userID=" + idHolder;
+}
+
 function userVal() {
   $.get("/api/users", function (data) {
 
@@ -99,7 +103,7 @@ function userVal() {
 
           idHolder = data[i].id;
 
-          tablePage();
+          breakdownPage();
         }
         else {
           alert("Incorrect Password");
