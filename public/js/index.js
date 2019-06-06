@@ -1,5 +1,11 @@
 // index page javascript
 
+//Global vars
+var uname;
+var idHolder;
+var returnUser;
+var returnPassword;
+
 //Toggle modal display when new user button is clicked - also hides all fields behind modal
 $("#new").on("click", () => {
   event.preventDefault();
@@ -11,12 +17,17 @@ $("#new").on("click", () => {
 
 //Login button, store input value into variable 
 $("#auth").on("click", () => {
+
   event.preventDefault();
-  var returnUser = $("#uname");
-  if (returnUser.val() === "") {
+
+  returnUser = $("#returnUser").val();
+  returnPassword = $("#returnPassword").val();
+
+  if (returnUser === "" || returnPassword === "") {
     alert("Username empty or no matching user found");
   } else {
-window.location.href="./pages/userbreakdown.html"
+
+    userVal();
   }
 });
 
@@ -29,23 +40,71 @@ $("#close").on("click", () => {
   $(".buttons").show();
 });
 
-//Validate user has completed form
+//Validate user has completed form & submit new user data
 $("#go").on("click", () => {
+
   var valid = true;
-  if($(".uname").val() === "" || $("#newuinco").val() === "") {
+  var newUinco = $("#newuinco").val();
+  var passwordU = $(".pw").val();
+  uname = $(".uname").val();
+
+  var newUser = {
+    user: uname,
+    income: newUinco,
+    password: passwordU
+  };
+
+  if (uname === "" || newUinco === "") {
     valid = false;
     alert("Form incomplete");
   }
-  if(valid === true) {
-//Variable for new user storing their input values
-    var newUser = {
-      user: $(".uname").val().trim(),
-      income: $("#newuinco").val().trim(),
-      password: $(".pw")
-    };
-     
 
-//redirect to expenses page 
-    window.location.href="./pages/table.html";
+  if (valid === true) {
+    makeUser(newUser);
   }
+
 });
+
+function makeUser(newUser) {
+  $.post("/api/users", newUser)
+    .then(getID);
+}
+
+function getID() {
+  $.get("/api/users", function (data) {
+
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].user === uname) {
+        idHolder = data[i].id;
+
+        tablePage();
+      }
+    }
+  });
+}
+
+function tablePage() {
+  window.location.href = "/table?userID=" + idHolder;
+}
+
+function userVal() {
+  $.get("/api/users", function (data) {
+
+    // console.log(data);
+
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].user === returnUser) {
+
+        if (data[i].password === returnPassword) {
+
+          idHolder = data[i].id;
+
+          tablePage();
+        }
+        else {
+          alert("Incorrect Password");
+        }
+      }
+    }
+  });
+}
