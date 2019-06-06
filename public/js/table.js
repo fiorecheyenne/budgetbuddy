@@ -51,6 +51,6 @@ $("#budgetbreak").on("click", () => {
 
     // push the object into the expenses array
     expenses.push(expense);
-    console.log(expense);
+    console.log(expenses);
   });
 });
