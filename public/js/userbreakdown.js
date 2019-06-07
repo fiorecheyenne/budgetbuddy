@@ -1,6 +1,6 @@
+// import { totalmem } from "os";
 
 //user breakdown page javascript
-
 $(document).ready(function () {
 
   var url = window.location.search;
@@ -35,7 +35,7 @@ $(document).ready(function () {
   function userDataLoad() {
 
     // console.log(userID);
-
+    userData.length = 0;
     $.get("/api/budgets", function (data) {
       // console.log(data);
 
@@ -45,14 +45,49 @@ $(document).ready(function () {
           // console.log(data[i]);
 
           userData.push(data[i]);
+ 
+          var expenseAmounts = userData[i].amount;
+          console.log(expenseAmounts);
+          // console.log('description: ' + userData[i].description + ' category: ' + userData[i].category + ' amount: ' + userData[i].amount); 
         }
       }
+    
+
+//append  expenses to expenses modal       
+var tbody = $(".expense-table");
+props = ["description", "amount", "category"];
+$.each(userData, function(i, data) {
+  var tr = $("<tr>");
+$.each(props, function(i, prop) {
+$('<td>').html(data[prop]).appendTo(tr);
+});
+tbody.append(tr);
+});
+
+      var income = userData[0].User.income;
+      var name = userData[0].User.user;
+      // var expense = userData[i].amount;
+     console.log(name);
+
+   
+      // console.log(expense);
+      //appending income to income modal
+      $("#inceditcontent").html(income);
+      //income tile display
+      $(".uincomein").html(income);
+      //welcome back --insert user name--
+      $("#welcomename").html(name
+      );
+      
+    
     });
     console.log(userData);
+  
   }
+ 
 
   grabID();
-});
+
 
 //function for chart display
 var options = {
@@ -173,3 +208,4 @@ var options = {
 var chart2 = new ApexCharts(document.querySelector("#chart2"), options);
 
 chart2.render();
+});
