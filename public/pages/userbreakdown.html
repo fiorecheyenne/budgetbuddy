@@ -33,12 +33,12 @@
     <div class="tile is-ancestor">
       <div class="tile is-4 is-vertical is-parent">
         <div class="tile is-child box">
-          <p class="title is-5 userincome is-vertical is-center">
+          <p class="title is-4 userincome is-vertical is-center">
             Total income:</p>
-          <p class="title uincomein has-text-success">
+          <p class="title is-5 uincomein has-text-success">
             2,000</p>
           <p class="editincome">
-            <button class="button is-medium is-fullwidth is-primary is-outlined" id="editinc">Edit Income</button>
+            <button class="button is-small is-fullwidth is-primary is-outlined" id="editinc">Edit Income</button>
           </p>
         </div>
         <!--Modal for editing income-->
@@ -62,13 +62,14 @@
 
         <!--Tile for total expenses-->
         <div class="tile is-child box">
-          <p class="title is-5 remainingmoney">Income - expenses:</p>
-          <p class="title remaining has-text-warning">300</p>
+          <p class="title is-4 remainingmoney">Expenses:</p>
+          <p class="title is-5 remaining has-text-warning">
+            <span class="uexpensein is-center"></span></p>
           <p class="editexpenses">
-            <button class="button is-medium is-fullwidth is-primary is-outlined" id="editexp">Edit Expenses</button>
+            <button class="button is-small is-fullwidth is-primary is-outlined" id="editexp">Edit Expenses</button>
           </p>
         </div>
-      </div>
+     
       <!--Modal for editing expenses-->
       <div class="modal" id="expensesmodal">
         <div class="modal-background"></div>
@@ -88,22 +89,7 @@
               <td></td>
               </tr>
               <tbody>
-              <!-- <tr> 
-                <td contenteditable="true">
-Expense
-                </td>
-                <td contenteditable="true">
-Amount
-                </td>
-                <td>
-                    <a class="button is-danger is-outlined delete">
-                        
-                        <span class="icon is-small">
-                          <i class="fas fa-times"></i>
-                        </span>
-                        </a>
-                </td>
-                </tr> -->
+
               </tbody>
             </table>
           </section>
@@ -113,6 +99,17 @@ Amount
           </footer>
         </div>
       </div>
+
+      <!-- <div class="tile is-parent"> -->
+          <div class="tile is-child box">
+              <p class="title is-4 remainingmoney">Remaining: </p>
+              <p class="title is-5 remaining has-text-danger">
+          <span class="remainingamt"></span>
+          </article>
+        </div>
+        </div>
+     
+              
       <!--Tile for chart to display expnsenses by category-->
       <div class="tile is-parent">
         <div class="tile is-child box">
