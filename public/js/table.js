@@ -45,6 +45,7 @@ $("#budgetbreak").on("click", () => {
     if (description === "" || amount === "" || category === "") {
       return;
     }
+
     
     console.log(userID);
 
