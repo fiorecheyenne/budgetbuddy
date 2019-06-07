@@ -17,7 +17,9 @@
     <div class="hero-body">
       <div class="container">
         <h1 class="title">
-          Your budget breakdown
+          Welcome back <span id="welcomename">
+
+          </span>!
         </h1>
         <h2 class="subtitle">
 
@@ -47,7 +49,8 @@
               <p class="modal-card-title">Income</p>
               <button class="delete" id="closeImodal" aria-label="close"></button>
             </header>
-            <section class="modal-card-body" id="inceditcontent">
+            <section class="modal-card-body"><h3 is-title>
+              <span class="span" contenteditable="true" id="inceditcontent"></span></h3>
               <!-- Content ... -->
             </section>
             <footer class="modal-card-foot">
@@ -72,10 +75,37 @@
         <div class="modal-card">
           <header class="modal-card-head">
             <p class="modal-card-title">Expenses</p>
+
             <button class="delete" id="closeEmodal" aria-label="close"></button>
           </header>
           <section class="modal-card-body" id="expeditcontent">
             <!-- Content ... -->
+            <table class="table is-fullwidth expense-table">
+              <tr>
+              <th>Expense</th></td>
+              <th>Amount</th></td>
+              <th>Category</th></td>
+              <td></td>
+              </tr>
+              <tbody>
+              <!-- <tr> 
+                <td contenteditable="true">
+Expense
+                </td>
+                <td contenteditable="true">
+Amount
+                </td>
+                <td>
+                    <a class="button is-danger is-outlined delete">
+                        
+                        <span class="icon is-small">
+                          <i class="fas fa-times"></i>
+                        </span>
+                        </a>
+                </td>
+                </tr> -->
+              </tbody>
+            </table>
           </section>
           <footer class="modal-card-foot">
             <button class="button is-success">Save changes</button>
