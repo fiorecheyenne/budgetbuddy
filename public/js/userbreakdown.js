@@ -13,23 +13,10 @@ $(document).ready(function () {
     if (url.indexOf("?userID=") !== -1) {
       idHolder = url.split("=")[1];
     }
-
-    // Checking to make sure we got the user ID
-    // console.log(idHolder);
-
     //Changing ID into and Int
     userID = parseInt(idHolder);
 
-    //Testing to make sure that the id is not a string
-    // if (Number.isInteger(userID)) {
-    //   console.log("IS")
-    // }
-    // else {
-    //   console.log("is not")
-    // }
-
     userDataLoad()
-
   }
 
   function userDataLoad() {
@@ -45,7 +32,6 @@ $(document).ready(function () {
           var expenseAmounts = userData[i].amount;
           console.log(expenseAmounts);
        
-          // console.log('description: ' + userData[i].description + ' category: ' + userData[i].category + ' amount: ' + userData[i].amount); 
         }
       }
 
@@ -69,11 +55,14 @@ console.log(expenseArr);
 const expenseTot = expenseArr.reduce((acc, expense) => acc + expense, 0);
 console.log(expenseTot);
 
+//variable for income 
+var income = userData[0].User.income;
+
 //total income - expenses
 const result = parseInt(income) - expenseTot;
      console.log(result);
 
-var income = userData[0].User.income;
+//variable for name 
 var name = userData[0].User.user;
   
       //appending income to income modal
