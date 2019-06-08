@@ -1,4 +1,3 @@
-// import { totalmem } from "os";
 
 //user breakdown page javascript
 $(document).ready(function () {
@@ -35,7 +34,7 @@ $(document).ready(function () {
         }
       }
 
-//append  expenses to expenses modal       
+//append  expenses as table to expenses modal       
 let props = ["description", "amount", "category"];
 userData.forEach(data => {
     let row = $("<tr>");
@@ -62,26 +61,24 @@ var income = userData[0].User.income;
 const result = parseInt(income) - expenseTot;
      console.log(result);
 
+// const catExp = userData.reduce((acc, cat) => {
+//   let summedCats = {};
+//   summedCats.Transportation = 0;
+//   const T = "Transportation";
+//   const M = "Medical";
+//   const L = "Loans";
+//   const R = "Rent/Mortgage";
+//   const U = "Utilities";
+//   const E = "Entertainment";
+//   const G = "Groceries"; 
+//   const P = "Personal.Care";
+//   const S = "Savings";
+//   const O = "Other";
+
+// })
 //variable for name 
 var name = userData[0].User.user;
   
-      //appending income to income modal
-      $("#inceditcontent").html(income);
-      //income tile display
-      $(".uincomein").html(income);
-      //welcome back --insert user name--
-      $("#welcomename").html(name
-      );
-      //expenses tile display
-      $(".uexpensein").html(expenseTot);
-      //remaining after expenses display
-     $(".remainingamt").html(result);
-    });
-    console.log(userData);
-  }
-
-  grabID();
-
 
 //function for chart display
 var options = {
@@ -111,6 +108,27 @@ var options = {
 };
 const chart = new ApexCharts(document.querySelector("#chart"), options);
 chart.render();
+
+
+      //appending income to income modal
+      $("#inceditcontent").html(income);
+      //income tile display
+      $(".uincomein").html(income);
+      //welcome back --insert user name--
+      $("#welcomename").html(name
+      );
+      //expenses tile display
+      $(".uexpensein").html(expenseTot);
+      //remaining after expenses display
+     $(".remainingamt").html(result);
+    });
+    console.log(userData);
+  }
+
+  grabID();
+
+
+
 
 //Expenses modal triggers 
 const expenseModal = $("#expensesmodal");
