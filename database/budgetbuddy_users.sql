@@ -24,7 +24,8 @@ DROP TABLE IF EXISTS `users`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user` varchar(255) NOT NULL,
+  `user` varchar(25) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `income` decimal(10,2) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
