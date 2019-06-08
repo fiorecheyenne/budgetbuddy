@@ -1,4 +1,6 @@
 
+// import { totalmem } from "os";
+
 //user breakdown page javascript
 $(document).ready(function () {
 
@@ -27,9 +29,6 @@ $(document).ready(function () {
         if (data[i].UserId === userID) {
           // console.log(data[i]);
           userData.push(data[i]);
- 
-          var expenseAmounts = userData[i].amount;
-          console.log(expenseAmounts);
        
         }
       }
@@ -63,7 +62,7 @@ const result = parseInt(income) - expenseTot;
 
 // const catExp = userData.reduce((acc, cat) => {
 //   let summedCats = {};
-//   summedCats.Transportation = 0;
+//   summedCats.Transportation = SSL_OP_SSLEAY_080_CLIENT_DH_BUG
 //   const T = "Transportation";
 //   const M = "Medical";
 //   const L = "Loans";
@@ -74,7 +73,6 @@ const result = parseInt(income) - expenseTot;
 //   const P = "Personal.Care";
 //   const S = "Savings";
 //   const O = "Other";
-
 // })
 //variable for name 
 var name = userData[0].User.user;
