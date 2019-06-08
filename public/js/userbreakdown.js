@@ -29,6 +29,7 @@ $(document).ready(function () {
         if (data[i].UserId === userID) {
           // console.log(data[i]);
           userData.push(data[i]);
+ 
        
         }
       }
@@ -44,60 +45,62 @@ userData.forEach(data => {
     });
     row.appendTo($(".expense-table"));
 });
+//variable for income 
+var income = parseInt(userData[0].User.income);
 
 //array of expense amounts
 const expenseArr = userData.map(amount => parseInt(amount.amount));
 console.log(expenseArr);
 
+//category array
+const categoryArr = userData.map(category => (category.category));
+console.log(categoryArr);
+
 //expense total
 const expenseTot = expenseArr.reduce((acc, expense) => acc + expense, 0);
 console.log(expenseTot);
 
-//variable for income 
-var income = userData[0].User.income;
+//variable for name 
+var name = userData[0].User.user;
 
-//total income - expenses
+// total income - expenses
 const result = parseInt(income) - expenseTot;
      console.log(result);
 
-// const catExp = userData.reduce((acc, cat) => {
-//   let summedCats = {};
-//   summedCats.Transportation = SSL_OP_SSLEAY_080_CLIENT_DH_BUG
-//   const T = "Transportation";
-//   const M = "Medical";
-//   const L = "Loans";
-//   const R = "Rent/Mortgage";
-//   const U = "Utilities";
-//   const E = "Entertainment";
-//   const G = "Groceries"; 
-//   const P = "Personal.Care";
-//   const S = "Savings";
-//   const O = "Other";
-// })
-//variable for name 
-var name = userData[0].User.user;
-  
-
-//function for chart display
+//expense chart
 var options = {
   chart: {
     type: 'donut',
-    height: 300
+    height: 350,
+  
   },
-  series: [44, 55, 13, 33],
-  labels: ['Transportation', 'Medical', 'Loans', 'Rent', 'Utilities', 'Entertainment', 'Groceries', 'Personal Care', 'Savings'],
+  theme: {
+    mode: 'light', 
+    palette: 'palette10', 
+    monochrome: {
+        enabled: false,
+        color: '#000000',
+        shadeTo: 'light',
+        shadeIntensity: 0.65
+    },
+},
+  series: expenseArr,
+  labels: categoryArr,
   dataLabels: {
     enabled: false,
     formatter: function (val) {
-      return val + "%"
+      return val + "$"
     },
+    textAnchor: 'end',
+    offsetX: 3000,
+    offsetY: 1400
   },
   legend: {
-    show: false
+    show: true
   },
   plotOptions: {
     pie: {
-      size: 100
+      size: 150
     },
     donut: {
       size: '80%'
@@ -108,22 +111,24 @@ const chart = new ApexCharts(document.querySelector("#chart"), options);
 chart.render();
 
 
-      //appending income to income modal
-      $("#inceditcontent").html(income);
-      //income tile display
-      $(".uincomein").html(income);
-      //welcome back --insert user name--
-      $("#welcomename").html(name
-      );
-      //expenses tile display
-      $(".uexpensein").html(expenseTot);
-      //remaining after expenses display
-     $(".remainingamt").html(result);
-    });
-    console.log(userData);
-  }
 
-  grabID();
+//appending income to income modal
+$("#inceditcontent").html(income);
+//income tile display
+$(".uincomein").html(income);
+//welcome back --insert user name--
+$("#welcomename").html(name
+);
+//expenses tile display
+$(".uexpensein").html(expenseTot);
+//remaining after expenses display
+$(".remainingamt").html(result);
+});
+console.log(userData);
+}
+
+grabID();
+      
 
 
 
