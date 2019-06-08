@@ -13,64 +13,58 @@ $(document).ready(function () {
     if (url.indexOf("?userID=") !== -1) {
       idHolder = url.split("=")[1];
     }
-
-    // Checking to make sure we got the user ID
-    // console.log(idHolder);
-
     //Changing ID into and Int
     userID = parseInt(idHolder);
 
-    //Testing to make sure that the id is not a string
-    // if (Number.isInteger(userID)) {
-    //   console.log("IS")
-    // }
-    // else {
-    //   console.log("is not")
-    // }
-
     userDataLoad()
-
   }
 
   function userDataLoad() {
-
     // console.log(userID);
     userData.length = 0;
     $.get("/api/budgets", function (data) {
       // console.log(data);
-
       for (var i = 0; i < data.length; i++) {
-
         if (data[i].UserId === userID) {
           // console.log(data[i]);
-
           userData.push(data[i]);
  
           var expenseAmounts = userData[i].amount;
           console.log(expenseAmounts);
-          // console.log('description: ' + userData[i].description + ' category: ' + userData[i].category + ' amount: ' + userData[i].amount); 
+       
         }
       }
-    
 
 //append  expenses to expenses modal       
-var tbody = $(".expense-table");
-props = ["description", "amount", "category"];
-$.each(userData, function(i, data) {
-  var tr = $("<tr>");
-$.each(props, function(i, prop) {
-$('<td>').html(data[prop]).appendTo(tr);
-});
-tbody.append(tr);
+let props = ["description", "amount", "category"];
+userData.forEach(data => {
+    let row = $("<tr>");
+    props.forEach(prop => {
+        $("<td>")
+            .html(data[prop])
+            .appendTo(row);
+    });
+    row.appendTo($(".expense-table"));
 });
 
-      var income = userData[0].User.income;
-      var name = userData[0].User.user;
-      // var expense = userData[i].amount;
-     console.log(name);
+//array of expense amounts
+const expenseArr = userData.map(amount => parseInt(amount.amount));
+console.log(expenseArr);
 
-   
-      // console.log(expense);
+//expense total
+const expenseTot = expenseArr.reduce((acc, expense) => acc + expense, 0);
+console.log(expenseTot);
+
+//variable for income 
+var income = userData[0].User.income;
+
+//total income - expenses
+const result = parseInt(income) - expenseTot;
+     console.log(result);
+
+//variable for name 
+var name = userData[0].User.user;
+  
       //appending income to income modal
       $("#inceditcontent").html(income);
       //income tile display
@@ -78,13 +72,13 @@ tbody.append(tr);
       //welcome back --insert user name--
       $("#welcomename").html(name
       );
-      
-    
+      //expenses tile display
+      $(".uexpensein").html(expenseTot);
+      //remaining after expenses display
+     $(".remainingamt").html(result);
     });
     console.log(userData);
-  
   }
- 
 
   grabID();
 
