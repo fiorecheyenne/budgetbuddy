@@ -11,7 +11,7 @@ Budget buddy will help you keep track of your expenses, and help you spend your 
 <li> Sequelize </li>
 <li> MySQL </li>
 <li> jQuery </li>
-<li> travis.yml </li>
+<li> travis.cli </li>
 <li> Express </li>
 <li> Routes </li>
 <li> Node </li>
