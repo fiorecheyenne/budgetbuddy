@@ -11,7 +11,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "apexcharts": "^3.7.1",
+    "apexcharts": "^3.24.0",
     "body-parser": "^1.19.0",
     "bulma-steps": "^2.2.1",
     "bulma-steps-component": "^0.5.3",
