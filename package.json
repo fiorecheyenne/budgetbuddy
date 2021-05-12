@@ -15,7 +15,7 @@
     "body-parser": "^1.19.0",
     "bulma-steps": "^2.2.1",
     "bulma-steps-component": "^0.5.3",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
